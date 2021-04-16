@@ -4,16 +4,21 @@ import random
 
 class Hat:
     """
-    Perform a large number of experiments to estimate an approximate probability.
+    Performs many experiments to estimate an approximate probability.
 
-    Arguments:
-        key=value pairs that specify the number of balls of each color
-        that are in the hat.
+    The approximate probability of drawing certain balls randomly from a hat
+    can be simulated using a program as implemented here.
+
+    Attributes:
+        **kwargs (obj): `key=value` pairs that specify the number of balls of
+        each color that are in the hat.
     """
     def __init__(self, **kwargs):
         """
-        Store the arguments as a list of strings.
-        Each string represents a single ball of that color.
+        Initializes the Hat class with a list of balls of each color.
+
+        Stores the arguments as a list of strings. Each string represents
+        a single ball of that color.
         """
         self.contents = [k for k, v in kwargs.items() for i in range(v)]
 
@@ -22,10 +27,10 @@ class Hat:
         Removes balls at random from self.contents.
         
         Argument:
-            balls: represents the number of balls to draw from the hat.
+            balls (int): The number of balls to draw from the hat.
 
         Return:
-            A list of balls as strings.
+           list: A list of balls randomly drawn from the hat as strings.
         """
         if balls > len(self.contents):
             return self.contents
@@ -43,13 +48,13 @@ def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
     Performs an experiment of drawing balls from a hat.
 
     Arguments:
-        hat: A hat object.
-        expected_balls: A group of balls to attempt to draw from the hat.
-        num_balls_drawn: The number of balls to draw from the hat in each experiment.
-        num_experiments: The number of experiments to perform.
+        hat (obj): A Hat class object.
+        expected_balls (obj): A group of balls to attempt to draw from the hat.
+        num_balls_drawn (int): The number of balls to draw from the hat.
+        num_experiments (int): The number of experiments to perform.
 
     Returns:
-        A probability as a float.
+        float: The probability of drawing the balls from the hat.
     """
     successes = 0
     expected_balls = [k for k, v in expected_balls.items() for i in range(v)]
